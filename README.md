@@ -6,7 +6,8 @@ Three interactive dashboards on Tableau Public, each answering one question from
 
 | | |
 |---|---|
-| **Tools** | Tableau Desktop Public Edition and Tableau Public: calculated fields, Top N and range filters, table calculations, groups, dashboard filter actions, maps and treemaps |
+| **Tools** | Tableau Desktop Public Edition and Tableau Public: calculated fields, Top N, range and dropdown filters, dashboard filter actions, table calculations and groups |
+| **Charts** | Bar charts, a line chart, a pie chart, scatter plots, a map, treemaps and headline figures |
 | **Datasets** | EMSI job change data for 16 city areas in Great Britain (2011 and 2014); Gapminder health data (158 countries, 1990 to 2008); Spotify audio features (176,774 unique tracks) |
 | **Bootcamp week** | Week 2, Days 1 and 2 (September 2026), Level 3 Data Technician Skills Bootcamp, Leep Talent |
 | **Type** | Individual work on training datasets |
@@ -30,21 +31,35 @@ The EMSI file covers 16 city areas rather than the whole of Great Britain, so it
 
 ## 🛠️ Approach
 
-**GB Employment.** Bar charts of job change and job totals by industry, a city map and a treemap of sub-industries. A calculated field gives each city's growth as total change divided by 2011 jobs, and clicking a city or industry filters the other charts.
+Each dashboard is built around one question, so a reader can follow it from the headline charts down to the detail.
 
-**Global Health.** The brief's four charts: life expectancy by continent in 2008, a trend for the five countries with the highest average life expectancy (one at a time, through a country selector), population by gender, and average life expectancy against average BMI by country. I added BMI by continent as my own choice.
+**GB Employment.** Bar charts of job change and job totals by industry, a map of the 16 city areas and a treemap of sub-industries. A calculated field gives each city's growth as total change divided by 2011 jobs. The charts work as filters: clicking a city or an industry filters the rest of the dashboard.
 
-**Spotify.** Calculated fields split tracks into Hit (popularity 60+), Mid (30 to 59) and Low (under 30), and give the share of hits by distinct track. I merged two spellings of "Children's Music" (straight and curly apostrophe) into one genre.
+**Global Health.** The brief's four charts: a bar chart of life expectancy by continent in 2008, a line chart of the trend for the five countries with the highest average life expectancy (one at a time, through a country dropdown), a pie chart of population by gender, and a scatter plot of average life expectancy against average BMI by country. I added a bar chart of BMI by continent as my own choice. Dropdown filters for continent and country update the charts together.
+
+**Spotify.** Calculated fields split tracks into Hit (popularity 60+), Mid (30 to 59) and Low (under 30), and give the share of hits by distinct track. I merged two spellings of "Children's Music" (straight and curly apostrophe) into one genre. The dashboard opens with three headline figures, then each chart answers a question in its title: a bar chart of popularity by genre, a bar chart comparing the audio features of hits and low-popularity tracks, a treemap of moods, and a scatter plot placing each genre by energy and valence. A genre dropdown filters the whole dashboard.
+
+```
+Popularity Tier:
+IF [popularity] >= 60 THEN "Hit"
+ELSEIF [popularity] >= 30 THEN "Mid"
+ELSE "Low"
+END
+
+% Hits:
+COUNTD(IF [Popularity Tier] = "Hit" THEN [track_id] END) / COUNTD([track_id])
+```
 
 ## 💡 Skills used
 
 **Technical**
 - Calculated fields: popularity tiers, share of hits (`COUNTD`) and a weighted growth rate
-- Top N and range filters, and filter actions between sheets
+- Interactive dashboards: Top N, range and dropdown filters, and filter actions between charts
+- Choosing a chart for each question: bar charts to compare, a line chart for change over time, a pie chart for a two-way split, scatter plots for relationships, a map for places and treemaps for parts of a whole
 - A percentage-of-total table calculation, and a group to merge a duplicate category
 
 **Transferable**
-- Turning an open brief into one clear question (Spotify)
+- Data storytelling: turning an open brief into one clear question (Spotify), with headline figures first and chart titles that ask the question each chart answers
 - Writing findings for a non-technical reader (see the NHS note below)
 - Reviewing my published work against the source data and correcting it
 
@@ -105,8 +120,12 @@ A sum of a rate or an average of percentages can look plausible and still be wro
 
 | File | What it contains |
 |---|---|
+| `GB_Employment_Data.twbx` | The GB Employment dashboard as a packaged Tableau workbook |
+| `Global_Health_Insights.twbx` | The Global Health Insights dashboard as a packaged Tableau workbook |
+| `Spotify_Data.twbx` | The Spotify dashboard as a packaged Tableau workbook, with its data inside |
 | `EMSI_JobChange_UK.xlsx` | The UK employment dataset behind the GB Employment dashboard |
+| `GapminderHealth_Dataset.xlsx` | The Gapminder health dataset behind the Global Health Insights dashboard |
 | `Data_Technician_Workbook_Week_2.docx` | The Leep Talent Week 2 workbook with my written answers (Days 1 and 2 cover this project) |
 | [`images/`](images/) | Screenshots of the three dashboards |
 
-The dashboards themselves are on Tableau Public, at the links at the top of this page.
+Each `.twbx` file opens in Tableau Desktop or the free Tableau Public app. The live dashboards are on Tableau Public, at the links at the top of this page.
