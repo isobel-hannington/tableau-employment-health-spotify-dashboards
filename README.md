@@ -92,29 +92,12 @@ COUNTD(IF [Popularity Tier] = "Hit" THEN [track_id] END) / COUNTD([track_id])
 - Pop, Rap and Rock are the most popular genres, and A Capella, Movie and Opera the least. Those three sit in the low-energy, low-valence corner, but energy alone doesn't explain popularity: Ska is among the most energetic, upbeat genres yet ranks in the bottom six.
 - By mood, 33.79% of tracks are Happy and Energetic, 29.88% Sad and Low and 26.74% Angry and Tense.
 
-## 🧾 Tableau products compared
-
-| Product | What it is | Cost and limits |
-|---|---|---|
-| Tableau Desktop Public Edition | Free authoring app | Everything is published publicly to Tableau Public; fewer data connectors |
-| Tableau Desktop (Creator licence) | Full authoring app | Paid; connects to a much wider range of sources |
-| Tableau Prep Builder | Cleans and reshapes data before analysis | Included in the paid Creator licence; scheduling flows with Prep Conductor needs a paid Server or Cloud set-up |
-| Tableau Server | Self-hosted platform for sharing and collaboration | Hosted and maintained by the organisation itself |
-| Tableau Cloud | Salesforce-hosted platform | Ongoing subscription; Tableau Pulse (AI summaries of metrics) is included in every edition |
-| Tableau+ | Premium Tableau Cloud edition | Adds premium AI features, such as Tableau Agent in Pulse |
-
-Tableau Public's main limit is that everything published is public, so it suits open or sample data only.
-
 ## 🧠 Challenges and what I learned
 
 - **Sum or average?** BMI has to be averaged. Summing it added 38 rows per country (19 years, men and women) and pushed the axis to about 1,100.
 - **Don't average percentages.** Averaging sub-industry growth rates let tiny sub-industries dominate (one in London went from 6 jobs to 535) and made Glasgow look as if it was growing when it lost jobs. Total change over total 2011 jobs gives the true rate.
 - **Check what a filter hides.** A Top 10 filter on job growth leaves large employers that shrank, such as manufacturing, off the job-total charts, so their titles now say so.
 - **Clean categories before grouping.** Two spellings of one genre would have split it across two bars.
-
-## 💼 Where this applies
-
-A sum of a rate or an average of percentages can look plausible and still be wrong. Spotting that is how an auditor tests a reported number. For analyst roles, the dashboards show I can turn a raw extract into something a manager can use unaided.
 
 ## 📁 Repository contents
 
