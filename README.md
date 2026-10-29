@@ -76,7 +76,7 @@ COUNTD(IF [Popularity Tier] = "Hit" THEN [track_id] END) / COUNTD([track_id])
 
 ### 🎵 What makes a song popular on Spotify?
 
-![Spotify dashboard](images/spotify-dashboard.png)
+![Spotify dashboard](images/spotify-dashboard.png) (https://public.tableau.com/app/profile/isobel.hannington/viz/Week2SpotifyData/WhatmakesasongpopularonSpotify) 
 
 - 9.19% of tracks are hits (popularity 60+), and the average popularity score is 41.1.
 - Hits are far less acoustic (0.23 against 0.56 for low-popularity tracks) and rarely instrumental (0.04 against 0.20), so polished, vocal-led production is the clearest difference.
