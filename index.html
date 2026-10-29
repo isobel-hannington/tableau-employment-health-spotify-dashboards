@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify Popularity Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    tableau-viz {
+      width: 100%;
+      height: 900px;
+    }
+  </style>
+</head>
+<body>
+  <h1>What Makes a Song Popular on Spotify?</h1>
+  <p>Interactive Tableau dashboard exploring Spotify data.</p>
+
+  <script type="module"
+    src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js">
+  </script>
+
+  <tableau-viz
+    src="https://public.tableau.com/views/Week2SpotifyData/WhatmakesasongpopularonSpotify"
+    toolbar="bottom">
+  </tableau-viz>
+</body>
+</html>
